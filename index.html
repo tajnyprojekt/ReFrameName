@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+    <title>ReFrameName | tajny_projekt</title>
+
+    <link rel="stylesheet" href="./resources/css/space-mono.css">
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <script src="./renderer.js"></script>
+</head>
+<body>
+    <h1 class="primary-text primary-color app-name">ReFrameName</h1>
+    <p class="panel hint-text">
+        Select folder containing frames sequence, choose renaming mode, specify the output filename pattern and click rename frames to go.
+        <span class="close">x</span>
+    </p>
+
+    <label>Frames location:</label>
+    <div class="panel">
+        <div class="control-container">
+            <label>source folder:</label><br>
+            <div class="file-chooser control-box">
+                <input id="in-dir-input" class="file-input" type="text" placeholder="source folder"><button id="in-dir-button" class="button file-button">Open</button>
+            </div>
+        </div>
+        <div class="control-container">
+            <label>mode:</label><br>
+            <input id="replace-checkbox" value="replace" type="radio" name="mode-radio" class="mode-radio" checked="checked">
+            <label for="replace-checkbox" class="mode-label">replace</label>
+
+            <input id="copy-checkbox" value="copy" type="radio" name="mode-radio" class="mode-radio">
+            <label for="copy-checkbox" class="mode-label">copy</label>
+
+            <input id="move-checkbox" value="move" type="radio" name="mode-radio" class="mode-radio">
+            <label for="move-checkbox" class="mode-label">move</label>
+        </div>
+        <div class="control-container">
+            <label>destination folder:</label><br>
+            <div class="file-chooser control-box disabled">
+                <input id="out-dir-input" class="file-input" type="text" placeholder="dst folder" disabled><button id="out-dir-button" class="button file-button" disabled>Open</button>
+            </div>
+        </div>
+    </div>
+
+    <label>Name pattern:</label>
+    <div class="panel">
+        <div class="control-container inline">
+            <label for="base-name-input">base name:</label><br>
+            <input id="base-name-input" class="control-box" type="text" placeholder="frame-">
+        </div>
+        <div class="control-container inline">
+            <label for="number-digits-input">number of digits:</label><br>
+            <input id="number-digits-input" class="control-box" type="number" placeholder="4" min="1" max="10" step="1">
+        </div>
+        <div class="control-container">
+            <label>pattern preview:</label>
+            <p id="pattern-preview" class="primary-color">frame-0000</p>
+        </div>
+    </div>
+    <button id="go-button" class="control-box go-button">rename frames</button>
+    <p id="msg" class="primary-color msg">&nbsp;</p>
+    <p class="footer">
+        Made with ♥ | <a href="https://tajnyprojekt.com" target="_blank"><b>tajny_</b>projekt</a>
+    </p>
+</body>
+</html>
