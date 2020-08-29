@@ -11,6 +11,7 @@ $(document).ready(function() {
     const $modeRadio = $('.mode-radio');
     const $baseNameInput = $('#base-name-input');
     const $numberDigitsInput = $('#number-digits-input');
+    const $startFromNumberInput = $('#start-from-input');
     const $goButton = $('#go-button');
     const $msg = $('#msg');
     const $patternPreview = $('#pattern-preview');
@@ -21,7 +22,8 @@ $(document).ready(function() {
         mode: 'replace',
         pattern: {
             baseName: 'frame-',
-            numberDigits: 4
+            numberDigits: 4,
+            startFrom: 0
         }
     };
 
@@ -89,6 +91,15 @@ $(document).ready(function() {
         }
         params.pattern.numberDigits = Math.floor(numberDigits);
         updatePatternPreview();
+    });
+
+    $startFromNumberInput.on('input change', () => {
+        let startFrom = $startFromNumberInput.val();
+        if (startFrom === undefined || startFrom === '' || startFrom < 0) {
+            startFrom = 0;
+        }
+        params.pattern.startFrom = Math.floor(startFrom);
+        console.log('start from',params.pattern.startFrom);
     });
 
     $goButton.on('click', () => {

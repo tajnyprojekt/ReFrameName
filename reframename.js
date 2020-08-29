@@ -61,12 +61,14 @@ function renameFiles(options, callback) {
 
     for (let i = 0; i < files.length; i++) {
 
+        const frameIndex = i + options.pattern.startFrom;
+
         if (options.mode === 'replace') {
             options.outPath = options.inPath;
         }
 
         const oldPath = path.join(options.inPath, files[i]);
-        const newName = formatFilename(i, options.pattern, path.extname(files[i]));
+        const newName = formatFilename(frameIndex, options.pattern, path.extname(files[i]));
         const newPath = path.join(options.outPath, newName);
         console.log(options.mode + ' " ' + oldPath + '" to "' + newPath + '"');
 
